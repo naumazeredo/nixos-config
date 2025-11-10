@@ -104,13 +104,7 @@
   users.defaultUserShell = pkgs.nushell;
 
   # git
-  programs.git = {
-    enable = true;
-    user = {
-      name = "Naum Azeredo";
-      email = "naumazeredo@gmail.com";
-    };
-  };
+  programs.git.enable = true;
 
   # Enable Steam
   nixpkgs.config.allowUnfreePredicate = pkg:
