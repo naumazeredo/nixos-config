@@ -48,7 +48,6 @@ button:hover {
 }
 
 #clock,
-#custom-sep,
 #battery,
 #cpu,
 #memory,
@@ -90,8 +89,3 @@ button:hover {
 #network.disconnected {
     background-color: @red;
 }
-
-#tray {
-    background-color: #2980b9;
-}
-
