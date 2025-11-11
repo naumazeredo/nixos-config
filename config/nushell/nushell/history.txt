@@ -1,0 +1,429 @@
+ls
+cd nixos-config/
+ls
+cd naum-nuc
+ls
+cp ~/.config/nushell/ nushell -r
+ls
+cp ~/.config/hypr hypr -r
+cp ~/.config/waybar waybar -r
+ls
+cd ..
+ls
+cp /etc/nixos/configuration.nix configuration.nix
+ls
+cat configuration.nix
+hyprctl hyprpaper
+hyprpaper &
+hyprctl hyprpaper
+hyprpaper --help
+cd ..
+ls
+config
+config nu
+$env.config.buffer_editor = "nvim"
+config nu
+ls
+cd .config
+ls
+cd kitty
+ls
+hyprpaper --help
+cd ..
+cd hypr
+ls
+nvim hyprland.conf
+hyprpaper &
+:x
+exit
+config nu
+sudo nvim /etc/nixos/configuration.nix
+cd .config
+ls
+hyprctl monitors all
+sudo nvim /etc/nixos/configuration.nix
+nixos-rebuild dry-run
+sudo nvim /etc/nixos/configuration.nix
+nixos-rebuild dry-run
+nixos-rebuild boot
+sudo nixos-rebuild boot
+reboot
+hyprctl monitors all
+ls
+cd .config
+cd waybar
+ls
+nvim config.jsonc
+ls
+hyprpaper
+hyprctl hyprpaper
+hyprctl hyprpaper listloaded
+hyprpaper
+cd ..
+ls
+cd hypr
+ls
+nvim hyprland.conf
+cd tmp
+cd nixos-hyprland/
+ls
+cd config/
+ls
+cd hypr
+ls
+nvim hyprland.conf
+ls
+hyprpaper
+cat hyprpaper.conf
+nvim hyprpaper.conf
+ls
+ls Downloads/
+mv Downloads/Guilty-Gear-Guilty-gear-strive-May-Guilty-Gear-anime-games-anime-girls-2134433-wallhere.com.jpg Wallpapers/wall1.jpg
+mv Downloads/christy-yuxuan-ma-may-side-a-adjusted.jpg Wallpapers/wall2.jpg
+reboot --help
+reboot -p
+config nu
+$env.config.buffer_editor = "nvim"
+config nu
+$env
+$env.config | table -e | less -R
+config nu
+$env.config | table -e | less -R
+config nu
+$env.config | table -e | less -R
+ls
+rofi -show run
+cd .config/hypr
+ls
+nvim hyprland.conf
+fact
+nvim hyprland.conf
+reboot
+nvim hyprland.conf
+cd .config/hypr
+nvim hyprland.conf
+ls
+nvim hyprland.conf
+ls
+cd ..
+ls
+cd waybar
+ls
+cd tmp
+ls
+cd nixos-hyprland/
+ls
+cd config/
+ls
+cd waybar
+ls
+cd .
+cd ..
+cd hypr
+ls
+nvim hyprland.conf
+nvim style.css
+pkill waybar
+waybar &
+waybar
+waybar &
+cd ..
+cd hypr/
+nvim hyprland.conf
+cd ..
+cd waybar
+ls
+cd .config/waybar
+cp style.css backup-style.css
+nvim style.css
+waybar -l debug
+nvim style.css
+nvim config.jsonc
+nvim style.css
+ls
+nvim style.css
+ls
+rm backup-style.css
+ls
+sudo nvim /etc/nixos/configuration.nix
+sudo nixos-rebuild boot
+nvim config.jsonc
+dunst
+dunst --help
+dunst -print test
+sudo nvim /etc/nixos/configuration.nix
+nix-shell -p pavucontrol
+ls
+sudo nvim /etc/nixos/configuration.nix
+nvim config.jsonc
+cd /etc/udev
+ls
+cd rules.d
+ls
+nvim 50-kaleidoscope.rules
+sudo nvim 50-kaleidoscope.rules
+nix-shell -p brave
+sudo nvim /etc/nixos/configuration.nix
+nix-shell -p brave
+ls
+nixos-rebuild dry-run
+sudo nixos-rebuild boot
+reboot
+cd .config/hypr
+ls
+wpctl
+wpctl status
+wpctl get-volume 'pipewire-0'
+playerctl
+nix-shell -p playerctl
+sudo nvim /etc/nixos/configuration.nix
+wpctl set-mute
+wpctl set-mute -h
+wpctl set-volume
+ls
+cd nixos-config
+ls
+cd naum-nuc
+ls
+cd ..
+ls
+mv configuration.nix naum-nuc
+ls
+cd naum-nuc/
+ls
+mkdir config
+ls
+cd ..
+ls
+ls ..
+mv ../cheatsheet.md .
+ls
+nvim cheatsheet.md
+ls
+cd naum-nuc
+ls
+rm -rf hypr
+ls nushell
+rm -rf nushell
+rm -rf waybar
+ls
+cd config
+ls
+nvim backup.sh
+ls
+cd ..
+ls
+cd ..
+ls
+mv naum-nuc/* . -r
+mv naum-nuc/* .
+ls
+ls naum-nuc
+rm -rf naum-nuc
+ls
+cd config
+ls
+nvim backup.sh
+cp ~/.config/waybar waybar -r
+cp ~/.config/hypr hypr -r
+cp ~/.config/nushell/ nushell -r
+ls
+ls -d */
+ls -d *
+ls -d -- */
+ls -d
+ls -d */
+bash
+sudo nvim /etc/nixos/configuration.nix
+nixos-rebuild dry-run
+sudo nvim /etc/nixos/configuration.nix
+nixos-rebuild dry-run
+sudo nvim /etc/nixos/configuration.nix
+nixos-rebuild dry-run
+sudo nvim /etc/nixos/configuration.nix
+nixos-rebuild dry-run
+nix-shell -p steam
+export NIXPKGS_ALLOW_UNFREE=1
+NIXPKGS_ALLOW_UNFREE=1
+$env.NIXPKGS_ALLOW_UNFREE=1
+export-env { $env.NIXPKGS_ALLOW_UNFREE=1 }
+export-env { $env.NIXPKGS_ALLOW_UNFREE = 1 }
+$env.NIXPKGS_ALLOW_UNFREE
+nix-shell -p steam
+ls
+git status
+cd ..
+ls
+nvim todo.md
+git status
+git add .
+nvim todo.md
+git status
+git add .
+cp /etc/nixos/configuration.nix configuration.nix
+git status
+git add configuration.nix
+git status
+git commit -m"Initial commit"
+nvim todo.md
+sudo nvim /etc/nixos/configuration.nix
+nvim todo.md
+git config --global user.name "Naum Azeredo"
+git config --global user.email "naumazeredo@gmail.com"
+git status
+cp /etc/nixos/configuration.nix configuration.nix
+ls
+git status
+git add .
+git commit -m"Initial commit"
+git push
+git remote add origin git@github.com:naumazeredo/nixos-config.git
+git branch -M master
+git push -u origin master
+ssh-keygen
+ssh-keygen -C "naumazeredo@gmail.com"
+cat ~/.ssh
+ls ~/.ssh
+cat ~/.ssh/id_ed25519.pub
+cat ~/.ssh/id_ed25519.pub | wl-copy
+git push -u origin master
+git status
+sudo nixos-rebuild boot
+sudo nvim /etc/nixos/configuration.nix
+nixos-rebuild dry-run
+sudo nixos-rebuild boot
+git status
+cp /etc/nixos/configuration.nix configuration.nix
+ls
+git status
+git commit -m"Fix git config"
+git add configuration.nix
+git status
+git commit -m"Fix git config"
+git push
+ls
+mv config/backup.sh .
+git status
+mv backup.sh get.sh
+nvim get.sh
+configs = ("test")
+reboot -p
+cd .config/waybar
+ls
+nvim config.jsonc
+cd ..
+notify-send test
+sudo nvim /etc/nixos/configuration.nix
+echo $SHELL
+echo $env.SHELL
+exit
+nix-shell -p nushell
+sudo nvim /etc/nixos/configuration.nix
+glxinfo
+nix-shell -p glxinfo
+lspci
+nvitop
+nix-shell -p nvitop
+nix-shell -p nvtop
+sudo nvim /etc/nixos/configuration.nix
+nixos-rebuild dry-run
+sudo nvim /etc/nixos/configuration.nix
+git status
+diskpart
+parted
+fdisk
+sudo fdisk
+sudo fdisk --help
+sudo fdisk -l
+sudo fdisk /dev/nvme1n1
+nix-shell -p parted
+nix-shell -p gparted
+lsblk
+sudo fdisk -l
+sudo fdisk nvme1n1
+sudo fdisk /dev/nvme1n1
+ls
+cd nixos-config
+ls
+cat cheatsheet.md
+cfdisk /dev/nvme1n1
+sudo cfdisk /dev/nvme1n1
+lsblk
+mkfs.ntfs -f /dev/nvme1n1p3 -L DATA
+nix-shell -p mkfs
+mkfs.ntfs -f /dev/nvme1n1p3 -L DATA
+command-no-found
+nix-shell -p e2fsprogs
+nix-shell -p command-not-found
+mkfs
+mkfs --help
+mkfs -t ntfs
+mkfs -t ntfs /dev/nvme1n1p3
+cd /mnt
+nix-shell -p ntfsprogs
+lsblk
+ls /mnt
+ls /
+ls /
+exit
+lsblk
+exit
+cd /mnt
+ls
+mkdir steam
+lsblk
+reboot
+cd /
+ls
+cd mnt
+ls
+lkblk
+lsblk
+df
+df -h
+ls
+cd ..
+ls
+sudo mv mnt data
+git status
+ls
+lsblk
+sudo mount /dev/nvme1n1p3 /data
+lsblk
+df
+nixos-generate-config --help
+nixos-generate-config --dir /data
+ls /data
+cd /data
+ls
+sudo nixos-generate-config --dir /data
+ls data
+ls
+sudo nixos-generate-config
+ls /etc/nixos/
+cd /etc/nixos
+nvim hardware-configuration.nix
+reboot
+lsblk
+sudo nixos-rebuild boot
+sudo nvim /etc/nixos/configuration.nix
+sudo nixos-rebuild boot
+reboot
+lsblk
+cd ~/.config/waybar
+ls
+nvim config.jsonc
+poweroff
+ls
+git status
+cd nixos-config
+ls
+mv get.sh setup.sh
+ls
+cd setup.sh
+cd nixos-config
+ls
+bash
+ls
+cd config
+ls
