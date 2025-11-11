@@ -18,6 +18,7 @@ configuration {
     display-window:             "WINDOW";
     drun-display-format:        "{name}";
     window-format:              "{w} · {c} · {t}";
+    icon-theme:                 "Papirus";
 }
 
 @theme "/dev/null"
