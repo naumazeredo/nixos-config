@@ -18,7 +18,7 @@
       enable = true;
       devices = [ "nodev" ];
       efiSupport = true;
-      useOSProber = true;
+      useOSProber = false; # true = find Windows
     };
   };
 
@@ -54,10 +54,22 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  services.xserver.displayManager.lightdm = {
-    enable = true;
-    greeters = {
-      slick.enable = true;
+  #services.xserver.displayManager.lightdm = {
+  #  enable = true;
+  #  greeters = {
+  #    slick.enable = true;
+  #  };
+  #};
+
+  services.displayManager = lib.mkForce {
+    sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
+
+    autoLogin = {
+      enable = true;
+      user = "naum";
     };
   };
 
@@ -106,21 +118,42 @@
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
 
+  # Configure audio
   services.pipewire = {
     enable = true;
     pulse.enable = true;
   };
+
+  # Configure bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        # Shows battery charge of connected devices on supported
+        # Bluetooth adapters. Defaults to 'false'.
+        Experimental = true;
+        # When enabled other devices can connect faster to us, however
+        # the tradeoff is increased power consumption. Defaults to
+        # 'false'.
+        FastConnectable = false;
+      };
+      Policy = {
+        # Enable all controllers when they are found. This includes
+        # adapters present on start as well as adapters that are plugged
+        # in later on. Defaults to 'true'.
+        AutoEnable = true;
+	    };	
+    };
+  };
+
+  services.blueman.enable = true;
 
   # Define a user account
   users.users.naum = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
     shell = pkgs.nushell;
-  };
-
-  services.displayManager.autoLogin = {
-    enable = true;
-    user = "naum";
   };
 
   nix.settings.allowed-users = [ "naum" ];
@@ -171,6 +204,7 @@
     dunst # notification manager
     libnotify # dep for dunst
     rofi-wayland # app launcher
+    papirus-icon-theme # icons
   ];
 
   # Desktop portals
