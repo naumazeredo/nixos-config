@@ -58,7 +58,7 @@
         // }
     },
     "clock": {
-        "format": "{:%F %a %T %Z}",
+        "format": "{:%F %a %T}",
         "interval": 5,
         "tooltip-format": "{calendar}",
         "calendar": {
