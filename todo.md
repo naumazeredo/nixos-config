@@ -2,20 +2,18 @@
 
 - dunst
 - rofi
-- kitty
 - neovim
 - git
 
 ## Scripts
 
-- get configs
-- set configs
+- deal with hyprland getting weird: kill hypr, setup configs, reload hypr?
 
 # Missing applications
 
-- Steam
 - music controller
 - Spotify?
+- hyprsession
 
 # NixOS config
 
