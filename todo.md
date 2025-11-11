@@ -1,7 +1,6 @@
 # Configs
 
 - dunst
-- rofi
 - neovim
 - git
 
