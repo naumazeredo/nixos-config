@@ -153,13 +153,26 @@
   users.users.naum = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
   };
 
   nix.settings.allowed-users = [ "naum" ];
 
   # Change default shell
-  users.defaultUserShell = pkgs.nushell;
+  users.defaultUserShell = pkgs.zsh;
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true;
+  };
+
+  programs.zsh.ohMyZsh = {
+    enable = true;
+    plugins = [ "git" ];
+    custom = "$HOME/.oh-my-zsh/custom";
+    theme = "powerlevel10k/powerlevel10k";
+  };
 
   # git
   programs.git.enable = true;
@@ -187,6 +200,7 @@
     wget
     git
     clang
+    rustup
     ripgrep
     telegram-desktop
     vesktop # discord
