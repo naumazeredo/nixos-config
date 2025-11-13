@@ -213,10 +213,12 @@
 
     # Hyperland config
 
+    hypridle # idle daemon
+    hyprlock # screen lock
     hyprpaper # wallpaper manager
     waybar # status bar. alternatively, more options, DIY: eww
-    dunst # notification manager
-    libnotify # dep for dunst
+    swaynotificationcenter # notification manager
+    libnotify # dep for swaync
     rofi-wayland # app launcher
     papirus-icon-theme # icons
   ];
@@ -247,6 +249,9 @@
   # Fonts
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
+    nerd-fonts.monofur
+    nerd-fonts.symbols-only
+    rubik
   ];
 
   # Enable experimental features

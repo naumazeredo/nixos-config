@@ -1,12 +1,12 @@
 # Configs
 
-- dunst
+- swaync (it's not using the config file)
 - neovim
 - git
 
 ## Scripts
 
-- deal with hyprland getting weird: kill hypr, setup configs, reload hypr?
+- deal with hyprland getting weird on first configuration: kill hypr, setup configs, reload hypr?
 
 # Missing applications
 
