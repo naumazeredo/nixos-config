@@ -10,6 +10,7 @@
 
 # Missing applications
 
+- network manager
 - music controller
 - Spotify?
 - hyprsession
