@@ -38,7 +38,12 @@
 
       "VIRUS1" = {
         pskRaw = "3606d96d56dc88de86d572c92ebd5a6591cf6a5398e8343f15c33761f651b83c";
-	priority = 501;
+	priority = 500;
+      };
+
+      "TP-Link_07C8" = {
+        pskRaw = "62034b58ca2630298a6eb0aae33fab6a41040febc470935247b1d76fa9fe9089";
+	priority = 500;
       };
     };
 
