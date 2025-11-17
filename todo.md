@@ -19,3 +19,7 @@
 
 - split hostname configs
 - setup openSSH keys
+
+# Ideas
+
+- move to sddm to use the catppuccin theme
