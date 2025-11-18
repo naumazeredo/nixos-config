@@ -3,7 +3,7 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+    ./hardware-configuration.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -22,36 +22,38 @@
     };
   };
 
-  # networking.hostName = "nixos"; # Define your hostname.
-  # Pick only one of the below networking options.
+  # Networking
+  networking.hostName = "naum-nuc-nixos";
+
+  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
-  networking.wireless = {
-    enable = true;
-    userControlled.enable = true;
+  #networking.wireless = {
+  #  enable = true;
+  #  userControlled.enable = true;
 
-    networks = {
-      "Granny Juju 2.0" = {
-        pskRaw = "043e02184fb292a0f3eb60604cceeba411d75100d567ab2a8e50aaf80d23526d";
-	priority = 500;
-      };
+  #  networks = {
+  #    "Granny Juju 2.0" = {
+  #      pskRaw = "043e02184fb292a0f3eb60604cceeba411d75100d567ab2a8e50aaf80d23526d";
+  #      priority = 500;
+  #    };
 
-      "VIRUS1" = {
-        pskRaw = "3606d96d56dc88de86d572c92ebd5a6591cf6a5398e8343f15c33761f651b83c";
-	priority = 500;
-      };
+  #    "VIRUS1" = {
+  #      pskRaw = "3606d96d56dc88de86d572c92ebd5a6591cf6a5398e8343f15c33761f651b83c";
+  #      priority = 500;
+  #    };
 
-      "TP-Link_07C8" = {
-        pskRaw = "62034b58ca2630298a6eb0aae33fab6a41040febc470935247b1d76fa9fe9089";
-	priority = 500;
-      };
-    };
+  #    "TP-Link_07C8" = {
+  #      pskRaw = "62034b58ca2630298a6eb0aae33fab6a41040febc470935247b1d76fa9fe9089";
+  #      priority = 500;
+  #    };
+  #  };
 
-    extraConfig = ''
-      ctrl_interface=/run/wpa_supplicant
-      ctrl_interface_group=wheel
-    '';
-  };
+  #  extraConfig = ''
+  #    ctrl_interface=/run/wpa_supplicant
+  #    ctrl_interface_group=wheel
+  #    '';
+  #};
 
   # Set your time zone.
   time.timeZone = "America/Bahia";
@@ -119,7 +121,7 @@
 
   # Hint Electron apps to use wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  
+
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
 
@@ -148,7 +150,7 @@
         # adapters present on start as well as adapters that are plugged
         # in later on. Defaults to 'true'.
         AutoEnable = true;
-	    };	
+      };	
     };
   };
 
@@ -157,7 +159,7 @@
   # Define a user account
   users.users.naum = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" ];
     shell = pkgs.zsh;
   };
 
@@ -185,7 +187,7 @@
   # Enable Steam
   nixpkgs.config.allowUnfreePredicate = pkg:
     builtins.elem (lib.getName pkg) [
-      "steam"
+    "steam"
       "steam-original"
       "steam-unwrapped"
       "steam-run"
@@ -198,35 +200,42 @@
     #localNetworkGameTransfer.openFirewall = true;
   };
 
+  # Enable tmux
+  programs.tmux = {
+    enable = true;
+    clock24 = true;
+  };
+
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     neovim
-    wget
-    git
-    clang
-    rustup
-    ripgrep
-    telegram-desktop
-    vesktop # discord
-    brave # browser
-    pavucontrol # pulseaudio/pipewire volume control
-    playerctl # music control
+      wget
+      git
+      clang
+      rustup
+      ripgrep
+      telegram-desktop
+      vesktop # discord
+      brave # browser
+      pavucontrol # pulseaudio/pipewire volume control
+      playerctl # music control
+      networkmanagerapplet
 
-    kitty # terminal
-    wl-clipboard # wl-copy + wl-paste
+      kitty # terminal
+      wl-clipboard # wl-copy + wl-paste
 
-    # Hyperland config
+      # Hyperland config
 
-    hypridle # idle daemon
-    hyprlock # screen lock
-    hyprpaper # wallpaper manager
-    waybar # status bar. alternatively, more options, DIY: eww
-    swaynotificationcenter # notification manager
-    libnotify # dep for swaync
-    rofi-wayland # app launcher
-    papirus-icon-theme # icons
-  ];
+      hypridle # idle daemon
+      hyprlock # screen lock
+      hyprpaper # wallpaper manager
+      waybar # status bar. alternatively, more options, DIY: eww
+      swaynotificationcenter # notification manager
+      libnotify # dep for swaync
+      rofi-wayland # app launcher
+      papirus-icon-theme # icons
+      ];
 
   # Desktop portals
   #xdg.portal.enable = true;
@@ -239,24 +248,24 @@
 
   # Rules to allow KeyboardIO Model 100 to be accessed via Kaleidoscope/Chrysalis
   services.udev.extraRules = ''
-  SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2303", SYMLINK+="Atreus",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
-  SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2302", SYMLINK+="Atreus",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
-  SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2301", SYMLINK+="Model01",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
-  SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2300", SYMLINK+="Model01",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
-  SUBSYSTEMS=="usb", ATTRS{idVendor}=="3496", ATTRS{idProduct}=="0006", SYMLINK+="Model100",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
-  SUBSYSTEMS=="usb", ATTRS{idVendor}=="3496", ATTRS{idProduct}=="0005", SYMLINK+="Model100",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
-  SUBSYSTEMS=="usb", ATTRS{idVendor}=="3496", ATTRS{idProduct}=="00a1", SYMLINK+="Preonic",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
-  SUBSYSTEMS=="usb", ATTRS{idVendor}=="3496", ATTRS{idProduct}=="00a3", SYMLINK+="Preonic",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
-  SUBSYSTEMS=="usb", ATTRS{idVendor}=="3496", ATTRS{idProduct}=="00a0", SYMLINK+="Preonic",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
-  SUBSYSTEMS=="usb", ATTRS{idVendor}=="3496", ATTRS{idProduct}=="00a3", SYMLINK+="Preonic",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
-  '';
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2303", SYMLINK+="Atreus",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2302", SYMLINK+="Atreus",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2301", SYMLINK+="Model01",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="2300", SYMLINK+="Model01",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="3496", ATTRS{idProduct}=="0006", SYMLINK+="Model100",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="3496", ATTRS{idProduct}=="0005", SYMLINK+="Model100",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="3496", ATTRS{idProduct}=="00a1", SYMLINK+="Preonic",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="3496", ATTRS{idProduct}=="00a3", SYMLINK+="Preonic",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="3496", ATTRS{idProduct}=="00a0", SYMLINK+="Preonic",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="3496", ATTRS{idProduct}=="00a3", SYMLINK+="Preonic",  ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_CANDIDATE}="0", TAG+="uaccess", TAG+="seat"
+    '';
 
   # Fonts
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
-    nerd-fonts.monofur
-    nerd-fonts.symbols-only
-    rubik
+      nerd-fonts.monofur
+      nerd-fonts.symbols-only
+      rubik
   ];
 
   # Enable experimental features
