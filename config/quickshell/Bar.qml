@@ -62,70 +62,9 @@ ShellRoot {
 
                 Item { width: 4 }
 
-                Repeater {
-                    id: workspaceList
-                    property var workspaces: Hyprland.workspaces.values.filter(ws => ws.monitor.name === bar.screen.name)
-                    model: workspaces.length
+                Workspaces {}
 
-                    Rectangle {
-                        Layout.preferredWidth: 16
-                        Layout.preferredHeight: parent.height
-                        color: "transparent"
-
-                        property var id: workspaceList.workspaces[index].id
-                        property var workspace: Hyprland.workspaces.values.find(w => w.id === id) ?? null
-                        property bool hasWindows: workspace !== null
-
-                        property bool mouseOver: false
-
-                        Rectangle {
-                            width: parent.width
-                            height: 4
-                            anchors.bottom: parent.bottom
-                            color: parent.workspace.focused ? root.colWhite : (parent.mouseOver ? root.colPurple : "transparent")
-
-                            // Full border
-                            //height: parent.height + 4
-                            //color: "transparent"
-                            //radius: 4
-                            //border {
-                            //    width: 1
-                            //    color: parent.workspace.focused ? root.colWhite : (parent.mouseOver ? root.colPurple : "transparent")
-                            //    pixelAligned: false
-                            //}
-                            //anchors.centerIn: parent
-                        }
-
-                        Text {
-                            text: parent.workspace.name
-                            color: parent.workspace.active ? root.colWhite: (hasWindows ? root.colBlue : root.colMuted)
-                            anchors.centerIn: parent
-
-                            font {
-                                pixelSize: root.fontSize;
-                                family: root.fontFamily
-                                bold: parent.workspace.active || parent.mouseOver
-                            }
-                        }
-
-                        MouseArea {
-                            anchors.fill: parent
-                            hoverEnabled: true
-                            onClicked: Hyprland.dispatch("workspace " + id)
-                            onEntered: parent.mouseOver = true
-                            onExited: parent.mouseOver = false
-                        }
-                    }
-                }
-
-                Rectangle {
-                    color: root.colMuted
-                    Layout.preferredWidth: 1
-                    Layout.preferredHeight: 16
-                    Layout.alignment: Qt.AlignVCenter
-                    Layout.leftMargin: 8
-                    Layout.rightMargin: 8
-                }
+                Separator {}
 
                 Text {
                     text: activeWindow
@@ -135,11 +74,14 @@ ShellRoot {
                         family: root.fontFamily
                         bold: true
                     }
-                    Layout.fillWidth: true
+                    //Layout.fillWidth: true
                     Layout.leftMargin: 4
+                    anchors.centerIn: parent
                     elide: Text.ElideRight
                     maximumLineCount: 1
                 }
+
+                Item { Layout.fillWidth: true }
 
                 Text {
                     text: "CPU " + cpuUsage + "%"
@@ -151,14 +93,7 @@ ShellRoot {
                     }
                 }
 
-                Rectangle {
-                    color: root.colMuted
-                    Layout.preferredWidth: 1
-                    Layout.preferredHeight: 16
-                    Layout.alignment: Qt.AlignVCenter
-                    Layout.leftMargin: 8
-                    Layout.rightMargin: 8
-                }
+                Separator {}
 
                 Text {
                     text: "Mem " + memUsage + " MBi"
@@ -170,14 +105,7 @@ ShellRoot {
                     }
                 }
 
-                Rectangle {
-                    color: root.colMuted
-                    Layout.preferredWidth: 1
-                    Layout.preferredHeight: 16
-                    Layout.alignment: Qt.AlignVCenter
-                    Layout.leftMargin: 8
-                    Layout.rightMargin: 8
-                }
+                Separator {}
 
                 Text {
                     text: volumeMuted ? "---  " : (volumeLevel + "% " + (volumeLevel < 50 ? " " : " "))
@@ -197,15 +125,7 @@ ShellRoot {
                     //"on-click": "pavucontrol"
                 }
 
-
-                Rectangle {
-                    color: root.colMuted
-                    Layout.preferredWidth: 1
-                    Layout.preferredHeight: 16
-                    Layout.alignment: Qt.AlignVCenter
-                    Layout.leftMargin: 8
-                    Layout.rightMargin: 8
-                }
+                Separator {}
 
                 Text {
                     property string format: "yyyy-MM-dd ddd HH:mm:ss"
@@ -227,7 +147,7 @@ ShellRoot {
                     }
                 }
 
-                Item { width: 4 }
+                Item { width: 8 }
             }
         }
     }
