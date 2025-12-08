@@ -1,5 +1,7 @@
 { config, lib, pkgs, ... }:
-
+let
+  unstable = import <nixos-unstable> {};
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -240,11 +242,12 @@
     hyprlock # screen lock
     hyprpaper # wallpaper manager
     #unstable.hyprshell # window switcher
-    waybar # status bar. alternatively, more options, DIY: eww
     swaynotificationcenter # notification manager
     libnotify # dep for swaync
     rofi-wayland # app launcher
     papirus-icon-theme # icons
+    unstable.quickshell
+    #waybar # status bar. alternatively, more options, DIY: eww
   ];
 
   # Desktop portals
