@@ -1,0 +1,16 @@
+#:schema https://jj-vcs.github.io/jj/latest/config-schema.json
+
+[ui]
+default-command = ["status"]
+
+[user]
+name = "Naum Azeredo"
+email = "naumazeredo@gmail.com"
+
+[aliases]
+l = ["log", "-r", "heads(ancestors(@) & immutable())::@ | descendants(@-)"]
+la = ["log", "-r", "::"]
+st = ["show", "--stat"]
+tug = ["bookmark", "advance", "-t", "@-"]
+push = ["git", "push"]
+pull = ["git", "fetch"]

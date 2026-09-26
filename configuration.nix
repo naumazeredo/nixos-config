@@ -282,7 +282,7 @@ in
   ];
 
   # Enable experimental features
-  nix.settings.experimental-features = [ "nix-command" ];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Configure DATA partition
   fileSystems."/data" = {
